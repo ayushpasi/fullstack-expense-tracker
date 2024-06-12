@@ -5,6 +5,7 @@ import About from "./components/About/About";
 import Slider from "./components/Slider/Slider";
 import Register from "./components/Register/Register";
 import Footer from "./components/Footer/Footer";
+import Login from "./components/Login/Login";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
         <Footer />
       </BrowserRouter>

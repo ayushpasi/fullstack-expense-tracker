@@ -1,29 +1,28 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
-function Register() {
-  const [name, setName] = useState();
+function Login() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [output, setOutput] = useState();
 
   const handleSubmit = () => {
-    const userDetails = {
-      name: name,
-      email: email,
-      password: password,
-    };
-
+    const userDetails = { email: email, password: password };
+    console.log(userDetails);
     axios
-      .post(process.env.REACT_APP_API_URL + "/user/sign-up", userDetails)
+      .post(process.env.REACT_APP_API_URL + "/user/login", userDetails)
       .then((response) => {
-        setOutput("Registered succesfully");
-        setName("");
-        setEmail("");
-        setPassword("");
+        // console.log(response.data);
+        setOutput("User login successfully....");
+        var obj = response.data.userDetails;
+        localStorage.setItem("token", response.data.token);
       })
       .catch((error) => {
-        setOutput(`Email already exists`);
-        console.log(error);
+        //console.log(error);
+        setOutput("Invalid User ");
+        setEmail("");
+        setPassword("");
       });
   };
 
@@ -34,23 +33,11 @@ function Register() {
           <div className="row">
             <div className="col-lg-12 py-6 px-5">
               <h2 className="display-5 mb-4">
-                Register
+                Login
                 <span className="text-primary"> Here</span>
               </h2>
               <font color="blue">{output}</font>
               <form>
-                <div className="form-group">
-                  <label htmlFor="name">Name</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="name"
-                    placeholder="Enter your name"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                  />
-                </div>
-
                 <br />
                 <div className="form-group">
                   <label htmlFor="email">Email</label>
@@ -76,7 +63,6 @@ function Register() {
                   />
                 </div>
                 <br />
-
                 <div className="text-center">
                   <button
                     type="button"
@@ -95,4 +81,4 @@ function Register() {
   );
 }
 
-export default Register;
+export default Login;
