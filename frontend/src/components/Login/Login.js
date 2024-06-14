@@ -29,7 +29,7 @@ function Login() {
         setOutput("User login successfully....");
         localStorage.setItem("token", response.data.token);
         login(response.data.token);
-        navigate("/dashboard");
+        navigate("/manage-expense");
       })
       .catch((error) => {
         //console.log(error);

@@ -27,17 +27,11 @@ const NavBar = () => {
           </h1>
           <nav id="navbar" className="navbar">
             <ul>
-              <li>
-                <Link className="nav-item nav-link" to="/">
-                  Home
-                </Link>
-              </li>
-
               {user ? (
                 <>
                   <li>
-                    <Link className="nav-item nav-link" to="/dashboard">
-                      Dashboard
+                    <Link className="nav-item nav-link" to="/manage-expense">
+                      Expenses
                     </Link>
                   </li>
                   <li>
@@ -54,9 +48,9 @@ const NavBar = () => {
                     </Link>
                   </li>
                   <li>
-                    <button className="nav-item nav-link btn" onClick={logout}>
-                      Logout
-                    </button>
+                    <Link to="/logout">
+                      <button className="nav-item nav-link btn">Logout</button>
+                    </Link>
                   </li>
                 </>
               ) : (
