@@ -1,6 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AuthContext } from "../../contexts/AuthContext";
+
 const Header = () => {
-  return (
+  const { user } = useContext(AuthContext);
+
+  return user ? (
+    <></>
+  ) : (
     <>
       <section id="topbar" class="d-flex align-items-center">
         <div class="container d-flex justify-content-center justify-content-md-between">

@@ -1,11 +1,23 @@
-import { useState } from "react";
+import { useState, useEffect, useRef, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthContext";
+
 import axios from "axios";
+
 function Login() {
+  const { login } = useContext(AuthContext);
+
+  const loginRef = useRef(null);
+
+  useEffect(() => {
+    if (loginRef.current) {
+      loginRef.current.focus();
+    }
+  }, []);
   const navigate = useNavigate();
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
-  const [output, setOutput] = useState();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [output, setOutput] = useState("");
 
   const handleSubmit = () => {
     const userDetails = { email: email, password: password };
@@ -15,8 +27,9 @@ function Login() {
       .then((response) => {
         // console.log(response.data);
         setOutput("User login successfully....");
-        var obj = response.data.userDetails;
         localStorage.setItem("token", response.data.token);
+        login(response.data.token);
+        navigate("/dashboard");
       })
       .catch((error) => {
         //console.log(error);
@@ -48,6 +61,7 @@ function Login() {
                     placeholder="Enter your email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
+                    ref={loginRef}
                   />
                 </div>
                 <br />

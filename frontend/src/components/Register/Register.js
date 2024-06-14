@@ -1,10 +1,19 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import axios from "axios";
+
 function Register() {
-  const [name, setName] = useState();
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
-  const [output, setOutput] = useState();
+  const registerRef = useRef(null);
+
+  useEffect(() => {
+    if (registerRef.current) {
+      registerRef.current.focus();
+    }
+  }, []);
+
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [output, setOutput] = useState("");
 
   const handleSubmit = () => {
     const userDetails = {
@@ -16,13 +25,13 @@ function Register() {
     axios
       .post(process.env.REACT_APP_API_URL + "/user/sign-up", userDetails)
       .then((response) => {
-        setOutput("Registered succesfully");
+        setOutput("Registered successfully");
         setName("");
         setEmail("");
         setPassword("");
       })
       .catch((error) => {
-        setOutput(`Email already exists`);
+        setOutput("Email already exists");
         console.log(error);
       });
   };
@@ -48,6 +57,7 @@ function Register() {
                     placeholder="Enter your name"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
+                    ref={registerRef} // Attach the ref here
                   />
                 </div>
 

@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AuthContext } from "../../contexts/AuthContext"; // Adjust the import path accordingly
 
 const Footer = () => {
-  return (
+  const { user } = useContext(AuthContext);
+
+  return user ? (
+    <></>
+  ) : (
     <>
       <footer id="footer">
         <div className="footer-top">
@@ -9,7 +14,7 @@ const Footer = () => {
             <div className="row">
               <div className="col-lg-3 col-md-6 footer-contact">
                 <h3>
-                  PMS<span>.</span>
+                  SmartSpend<span>.</span>
                 </h3>
                 <br />
                 X Street, Indore, India
