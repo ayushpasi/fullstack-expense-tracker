@@ -37,7 +37,7 @@ const NavBar = () => {
                   <li>
                     <Link
                       className="nav-item nav-link"
-                      to="/report"
+                      to="/reports"
                       onClick={user.isPremiumUser ? null : handlePremiumFeature}
                     >
                       {user.isPremiumUser ? (

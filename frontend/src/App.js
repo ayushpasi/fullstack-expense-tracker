@@ -9,6 +9,7 @@ import ManageExpense from "./components/ManageExpense/ManageExpense";
 import Logout from "./components/Logout/Logout";
 import BuyPremium from "./components/BuyPremium/BuyPremium";
 import Leaderboard from "./components/Leaderboard/Leaderboard";
+import Reports from "./components/Reports/Reports";
 import { AuthProvider } from "./contexts/AuthContext";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 const App = () => {
@@ -21,6 +22,7 @@ const App = () => {
           <NavBar />
           <Slider />
           <Routes>
+            <Route path="/reports" element={<Reports />} />
             <Route path="/leaderboard" element={<Leaderboard />} />
             <Route path="/buy-premium" element={<BuyPremium />} />
             <Route path="/manage-expense" element={<ManageExpense />} />
