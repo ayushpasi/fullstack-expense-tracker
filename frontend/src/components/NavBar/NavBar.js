@@ -3,16 +3,16 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext";
 
 const NavBar = () => {
-  const { user, logout } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handlePremiumFeature = (e) => {
-    if (!user.isPremium) {
+    if (!user.isPremiumUser) {
       e.preventDefault();
       alert(
         "This feature is available for premium members only. Please upgrade to access."
       );
-      navigate("/buypremium");
+      navigate("/buy-premium");
     }
   };
 
@@ -21,9 +21,9 @@ const NavBar = () => {
       <header id="header" className="d-flex align-items-center">
         <div className="container d-flex align-items-center justify-content-between">
           <h1 className="logo">
-            <a href="index.html">
+            <Link to="//manage-expense">
               SmartSpend<span>.</span>
-            </a>
+            </Link>
           </h1>
           <nav id="navbar" className="navbar">
             <ul>
@@ -45,6 +45,30 @@ const NavBar = () => {
                       ) : (
                         <>Report &#128081;</>
                       )}
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      className="nav-item nav-link"
+                      to="/leaderboard"
+                      onClick={user.isPremiumUser ? null : handlePremiumFeature}
+                    >
+                      {user.isPremiumUser ? (
+                        <>Leaderboard &#128142;</>
+                      ) : (
+                        <>Leaderboard &#128081;</>
+                      )}
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/buy-premium">
+                      <button className="nav-item nav-link btn">
+                        {user.isPremiumUser ? (
+                          <>Buy Premium &#128142;</>
+                        ) : (
+                          <>Buy Premium &#128081;</>
+                        )}
+                      </button>
                     </Link>
                   </li>
                   <li>

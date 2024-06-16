@@ -7,6 +7,8 @@ import Footer from "./components/Footer/Footer";
 import Login from "./components/Login/Login";
 import ManageExpense from "./components/ManageExpense/ManageExpense";
 import Logout from "./components/Logout/Logout";
+import BuyPremium from "./components/BuyPremium/BuyPremium";
+import Leaderboard from "./components/Leaderboard/Leaderboard";
 import { AuthProvider } from "./contexts/AuthContext";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 const App = () => {
@@ -19,6 +21,8 @@ const App = () => {
           <NavBar />
           <Slider />
           <Routes>
+            <Route path="/leaderboard" element={<Leaderboard />} />
+            <Route path="/buy-premium" element={<BuyPremium />} />
             <Route path="/manage-expense" element={<ManageExpense />} />
             <Route path="/about" element={<About />} />
             <Route path="/register" element={<Register />} />
