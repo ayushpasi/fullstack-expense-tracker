@@ -107,11 +107,11 @@ const Footer = () => {
           <p className="m-0">
             &copy;{" "}
             <a className="text-secondary border-bottom" href="#">
-              PMS
+              SmartSpend
             </a>
             . All Rights Reserved. Designed by{" "}
             <a className="text-secondary border-bottom" href="">
-              PMS
+              SmartSpend
             </a>
           </p>
         </div>

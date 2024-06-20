@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext";
-
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 function Login() {
@@ -85,6 +85,11 @@ function Login() {
                   >
                     Submit
                   </button>
+                  <br />
+                  <br />
+                  <Link to="/forgot-password" className="btn btn-link">
+                    Forgot Password?
+                  </Link>
                 </div>
               </form>
             </div>
