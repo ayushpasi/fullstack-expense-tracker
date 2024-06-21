@@ -32,8 +32,8 @@ function Login() {
         navigate("/manage-expense");
       })
       .catch((error) => {
-        //console.log(error);
-        setOutput("Invalid User ");
+        console.log(error);
+        setOutput(error);
         setEmail("");
         setPassword("");
       });
