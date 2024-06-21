@@ -33,7 +33,7 @@ function Login() {
       })
       .catch((error) => {
         console.log(error);
-        setOutput(error);
+        setOutput("Unauthorized");
         setEmail("");
         setPassword("");
       });
