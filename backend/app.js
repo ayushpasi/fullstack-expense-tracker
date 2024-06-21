@@ -47,6 +47,11 @@ app.use("/premium", premiumFeatureRouter);
 
 app.use("/password", resetPasswordRouter);
 
+app.get("/config", (req, res) => {
+  res.json({
+    API_URL: process.env.REACT_APP,
+  });
+});
 // User.hasMany(Expense);
 // Expense.belongsTo(User);
 

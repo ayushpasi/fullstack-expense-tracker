@@ -60,7 +60,7 @@ const sendMail = async (req, res) => {
       htmlContent: `
         <p>Hello,</p>
         <p>Please follow the link to reset your password.</p>
-        <p><a href="${process.env.WEBSITE}/reset-password/${requestId}">Reset Password</a></p>
+        <p><a href="${process.env.WEBSITE}/password/reset-password-page/${requestId}">Reset Password</a></p>
         <p>If you did not request this, please ignore this email.</p>
       `,
       params: {
@@ -89,13 +89,11 @@ const resetPasswordPage = async (req, res) => {
 const updatePassword = async (req, res) => {
   try {
     console.log("UPDATE PASSWORD");
-    // const requestId = req.headers.referer.split("/");
+    const requestId = req.headers.referer.split("/");
     // console.log(">>>>>>", requestId);
     const password = req.body.password;
-    const requestId = req.body.requestId;
-    console.log(`${password} >>>> ${requestId}`);
     const checkResetRequest = await ResetPassword.findOne({
-      id: requestId,
+      id: requestId[requestId.length - 1],
       isActive: true,
     }).exec();
     console.log(checkResetRequest);

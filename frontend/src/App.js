@@ -13,7 +13,6 @@ import Reports from "./components/Reports/Reports";
 import Contact from "./components/Contact/Contact";
 import { AuthProvider } from "./contexts/AuthContext";
 import ForgotPassword from "./components/ForgotPassword/ForgotPassword";
-import ResetPassword from "./components/ResetPassword/ResetPassword";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 const App = () => {
   return (
@@ -25,10 +24,6 @@ const App = () => {
           <NavBar />
           <Slider />
           <Routes>
-            <Route
-              path="/reset-password/:requestId"
-              element={<ResetPassword />}
-            />
             <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/reports" element={<Reports />} />
