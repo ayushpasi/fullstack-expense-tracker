@@ -12,9 +12,9 @@ const Slider = () => {
           <h1>
             Welcome to <span>SmartSpend</span>
           </h1>
-          <h2>We Provide Solutions for Your Project Management</h2>
+          <h2>We Provide Solutions for Your Managing Expenses</h2>
           <div className="d-flex">
-            <Link to="/about" className="btn-get-started scrollto">
+            <Link to="/register" className="btn-get-started scrollto">
               Get Started
             </Link>
             <a
