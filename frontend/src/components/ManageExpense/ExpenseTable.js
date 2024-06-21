@@ -8,9 +8,12 @@ const ExpenseTable = ({ expenses, setExpenses, selectExpense }) => {
 
   const deleteExpense = async (id) => {
     try {
-      await axios.delete(`http://localhost:4000/expense/delete-expense/${id}`, {
-        headers: { Authorization: token },
-      });
+      await axios.delete(
+        `${process.env.REACT_APP_API_URL}/expense/delete-expense/${id}`,
+        {
+          headers: { Authorization: token },
+        }
+      );
       setExpenses(expenses.filter((expense) => expense._id !== id));
     } catch (error) {
       console.error("Error deleting expense:", error);

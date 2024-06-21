@@ -51,7 +51,7 @@ const ExpenseForm = ({
     try {
       if (selectedExpense) {
         await axios.put(
-          `http://localhost:4000/expense/edit-expense/${selectedExpense._id}`,
+          `${process.env.REACT_APP_API_URL}/expense/edit-expense/${selectedExpense._id}`,
           expenseData,
           {
             headers: { Authorization: token },
@@ -60,7 +60,7 @@ const ExpenseForm = ({
         setSelectedExpense(null);
       } else {
         await axios.post(
-          "http://localhost:4000/expense/add-expense",
+          `${process.env.REACT_APP_API_URL}/expense/add-expense`,
           expenseData,
           {
             headers: { Authorization: token },

@@ -21,7 +21,7 @@ const ManageExpense = () => {
   const fetchExpenses = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:4000/expense/get-all-expenses/${currentPage}?limit=${limit}`,
+        `${process.env.REACT_APP_API_URL}/expense/get-all-expenses/${currentPage}?limit=${limit}`,
         {
           headers: { Authorization: token },
         }

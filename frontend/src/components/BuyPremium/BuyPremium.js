@@ -21,8 +21,10 @@ const BuyPremium = () => {
     const initiatePurchase = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:4000/purchase/premium-membership",
-          { headers: { Authorization: storedToken } }
+          `${process.env.REACT_APP_API_URL}/purchase/premium-membership`,
+          {
+            headers: { Authorization: storedToken },
+          }
         );
 
         const options = {
@@ -31,7 +33,7 @@ const BuyPremium = () => {
           handler: async function (response) {
             try {
               const res = await axios.post(
-                "http://localhost:4000/purchase/update-transaction-status",
+                `${process.env.REACT_APP_API_URL}/purchase/update-transaction-status`,
                 {
                   order_id: options.order_id,
                   payment_id: response.razorpay_payment_id,
