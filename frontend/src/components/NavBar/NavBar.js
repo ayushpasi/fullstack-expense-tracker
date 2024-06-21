@@ -30,7 +30,7 @@ const NavBar = () => {
               {user ? (
                 <>
                   <li>
-                    <Link className="nav-item nav-link" to="/manage-expense">
+                    <Link className="nav-item nav-link" to="/">
                       Expenses
                     </Link>
                   </li>
